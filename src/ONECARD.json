@@ -1,0 +1,18 @@
+{
+  "id":0,
+  "type" : "player-card",
+  "title" : "Magnum .45",
+  "text": "Pour flinguer tout ce qui bouge",
+  "family" : "one-handed",
+  "theme" : "",
+  "illustration" : "blabla.jpg",
+  "actions" : {
+    "possible-actions:" : {
+      "action-type" : "fight",
+      "action-text" : "+1 pour toute vos compétences"
+    },
+    "onReveal-actions" : {
+      "revealText" : "Révélation de la carte"
+    }
+  }
+}
