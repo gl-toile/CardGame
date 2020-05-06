@@ -26,7 +26,7 @@ export class Map extends Displayable {
 
       row.forEach(function(placeCard){
 
-        let divClass = placeCard.title ? "case-lieu" : "case-vide";
+        let divClass = placeCard.name ? "case-lieu" : "case-vide";
 
         if(divClass == "case-vide"){
           htmlCode+='<div class="col case '+ divClass +'">';
@@ -37,11 +37,11 @@ export class Map extends Displayable {
           htmlCode+='<div class="col case '+ divClass +'">'
 
           htmlCode+='<div class="row">';
-          htmlCode+='<div class="col"><img src="' + placeCard.illustrationUrl + '" class="img-fluid" style=""></div>';
+          htmlCode+='<div class="col"><img src="' + placeCard.imagesrc + '" class="img-fluid" style=""></div>';
           htmlCode+= '</div>';
 
           htmlCode+='<div class="row"><div class="col card-content">';
-          htmlCode+= (placeCard.title || '');
+          htmlCode+= (placeCard.name || '');
           htmlCode+='<ul class="infos-lieu">';
           htmlCode+='<li>Valeur occulte : '+ placeCard.occultValue + '</li>';
           htmlCode+='<li>Indices : '+ placeCard.clues + '</li>';

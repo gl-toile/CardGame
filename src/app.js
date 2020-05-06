@@ -19,28 +19,28 @@ export class Partie{
     this.chaosTokens = [1, 0, 0, -1, -2];
 
     this.inGameEnnemies = [
-      {title: "Goule des glaces", effects:"4 2 2", damages:2, horrors:1, isHunter:false, location:1, isUp:false},
-      {title: "Nuée de rats", effects: "1 1 3", damages:1, horrors:1,isHunter:true, location:2, isUp:false},
-      {title: "Nuée de rats", effects: "1 1 3",damages:1, horrors:1, isHunter:true, location:3, isUp:true},
-      {title: "Goule des glaces", effects:"4 2 2", damages:2, horrors:1,isHunter:false, location:4, isUp:false}
+      {name: "Goule des glaces", effects:"4 2 2", damages:2, horrors:1, isHunter:false, location:1, isUp:false},
+      {name: "Nuée de rats", effects: "1 1 3", damages:1, horrors:1,isHunter:true, location:2, isUp:false},
+      {name: "Nuée de rats", effects: "1 1 3",damages:1, horrors:1, isHunter:true, location:3, isUp:true},
+      {name: "Goule des glaces", effects:"4 2 2", damages:2, horrors:1,isHunter:false, location:4, isUp:false}
     ];
     this.encounterDeck = [
-      {title: "Goule des glaces",  type:"ennemy", effects: "4 3 2"},
-      {title : "Paralysé par la peur", type:"skill-test",  effects: "Effectuer un test volonté(3) ou défaussez 3 cartes"}
+      {name: "Goule des glaces",  type:"ennemy", effects: "4 3 2"},
+      {name : "Paralysé par la peur", type:"skill-test",  effects: "Effectuer un test volonté(3) ou défaussez 3 cartes"}
     ];
 
     var defaultCards =[
-      {title: "Magnum .45", text: "Pour flinguer tout ce qui bouge", playerCardFamily: "one-handed"},
-      {title: "Agent de police ", text: "Allié super baleze", playerCardFamily: "ally"},
-      {title: "Chance", text: "Vous avez de la change", playerCardFamily: "eventCard"},
-      {title: "Chat errant", text: "Miaouh", playerCardFamily:"ally"},
-      {title: "Baseball Bat", text: "Bim !", playerCardFamily:"two-handed"}
+      {name: "Magnum .45", text: "Pour flinguer tout ce qui bouge", playerCardFamily: "one-handed"},
+      {name: "Agent de police ", text: "Allié super baleze", playerCardFamily: "ally"},
+      {name: "Chance", text: "Vous avez de la change", playerCardFamily: "eventCard"},
+      {name: "Chat errant", text: "Miaouh", playerCardFamily:"ally"},
+      {name: "Baseball Bat", text: "Bim !", playerCardFamily:"two-handed"}
     ];
 
     var deck=[];
     console.log(defaultCards);
     defaultCards.forEach(function(card){
-      deck.push(new PlayerCard(card.title, card.text, card.playerCardFamily));
+      deck.push(new PlayerCard(card.name, card.text, card.playerCardFamily));
     });
 
     this.joueurs = [
@@ -59,13 +59,11 @@ export class Partie{
       console.log(joueur.name.toUpperCase());
       console.log("Cartes dans le deck : ");
       joueur.deck.forEach(function(card){
-        console.log(card.title + " (" + card.playerCardFamily + ") - " + card.text);
+        console.log(card.name + " (" + card.playerCardFamily + ") - " + card.text);
       });
     });
 
-
   }
-
 
     // Retourne un modificateur Chaos
     chaosToken(){
@@ -95,10 +93,10 @@ export class Partie{
     this.joueurs.forEach(function (joueur){
       let drawId = Math.floor(Math.random() * this.encounterDeck.length); // Index aléatoire
       var encounterCard = this.encounterDeck[drawId];
-      console.log("1.4 " + joueur.name + " a pioché : " + encounterCard.title);
+      console.log("1.4 " + joueur.name + " a pioché : " + encounterCard.name);
       if(encounterCard.type == "ennemy"){
         //this.inGameEnnemies.push(encounterCard);
-        console.log("1.4 " + encounterCard.title + " ajoutée sur la carte !");
+        console.log("1.4 " + encounterCard.name + " ajoutée sur la carte !");
       }
       else if(encounterCard.type=="skill-test"){
         this.skillTest("will", joueur.will, 8);
@@ -154,7 +152,7 @@ export class Partie{
     // 3.2 Les ennemis Chasseur se déplacent
     this.inGameEnnemies.forEach(function(ennemy){
       if(ennemy.isHunter){
-        console.log("3.2 " + ennemy.title + " se déplace...");
+        console.log("3.2 " + ennemy.name + " se déplace...");
       }
     }, this);
 
@@ -169,7 +167,7 @@ export class Partie{
         if(joueur.location == ennemy.location){
           // Fenêtre de joueur
           this.playerWindow();
-          console.log("3.3 %s attaque %s et inflige +%i dégats / +%i horreurs", ennemy.title, joueur.name, ennemy.damages, ennemy.horrors);
+          console.log("3.3 %s attaque %s et inflige +%i dégats / +%i horreurs", ennemy.name, joueur.name, ennemy.damages, ennemy.horrors);
           joueur.takesDamages(1,1);
           console.log();
         }
@@ -199,7 +197,7 @@ export class Partie{
     this.inGameEnnemies.forEach(function(ennemy){
       if(!ennemy.isUp){
         ennemy.isUp=true;
-        console.log("4.3 " + ennemy.title + " se redresse.");
+        console.log("4.3 " + ennemy.name + " se redresse.");
       }
     })
 
@@ -211,7 +209,7 @@ export class Partie{
       console.log("4.4 " + joueur.name + " a pris 1 ressource. Total : "+ joueur.ressources);
 
       if(drawCard) {
-        console.log("4.4 " + joueur.name + ' a pioché : "' + drawCard.title +'"');
+        console.log("4.4 " + joueur.name + ' a pioché : "' + drawCard.name +'"');
       }else{
         console.log("4.4 " + joueur.name + " n'a pas plus de carte dans son deck");
       }

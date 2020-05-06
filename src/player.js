@@ -72,7 +72,7 @@ export class Player extends Speaker{
     console.log("----");
     console.log("Main de " + this.name + " : ");
     this.hand.forEach(function(card){
-      console.log(card.title + " (" + card.playerCardFamily + ") - " + card.text);
+      console.log(card.name + " (" + card.playerCardFamily + ") - " + card.text);
     });
     console.log("----");
   }

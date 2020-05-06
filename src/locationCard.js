@@ -5,8 +5,8 @@ export class LocationCard extends Card{
   occultValue = 2;
   clues = 4;
 
-  constructor(title, illustrationUrl){
-    super(title, illustrationUrl);
+  constructor(title, imagesrc){
+    super(title, imagesrc);
   }
 
 }

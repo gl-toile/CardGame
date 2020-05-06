@@ -1,20 +1,44 @@
 import { Displayable } from './displayable';
 //CLASS CARD
 export class Card extends Displayable{
-  title;
+  name;
+  subname;
+  text;
+
+  //clues_fixed =false;
+  //health_per_investigator;
+
+  traits;
+  real_traits;
+  flavour;
+  illustrator;
+  is_unique;
+  exile;
+  hidden;
+  permanent;
+
+  //double_sided;
+  //back_text;
+  //back_flavor;
+  //octgn_id;
+  url; //card url on ffg site
+
+  imagesrc;
+  //backimagesrc;
+
   hiddenSide;
   activeSide;
   theme;
-  illustrationUrl;
+  imagesrc;
   type; // Carte joueur, carte rencontre, carte histoire etc.
 
-  constructor(titre, illustrationUrl, texteRecto, texteVerso, type){
+  constructor(titre, imagesrc, texteRecto, texteVerso, type){
     super();
-    this.title = titre;
+    this.name = titre;
     this.text = texteRecto;
     this.textVerso = texteVerso || null;
     this.cout = 0;
-    this.illustrationUrl=illustrationUrl;
+    this.imagesrc=imagesrc;
 
     console.log("init card");
   }

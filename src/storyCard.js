@@ -28,7 +28,7 @@ export class StoryCard extends Card{
 
   addFatalities(nb = 1){
     this.fatalitiesCount+=nb;
-    console.log("1.2 +" + nb + " fatalité(s) sur " + this.title);
+    console.log("1.2 +" + nb + " fatalité(s) sur " + this.name);
   }
 
   fatalityState(){
